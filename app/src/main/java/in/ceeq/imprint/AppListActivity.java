@@ -2,10 +2,12 @@ package in.ceeq.imprint;
 
 import android.Manifest;
 import android.app.KeyguardManager;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
@@ -39,8 +41,10 @@ import javax.crypto.SecretKey;
 import in.ceeq.imprint.adapters.AppListRecyclerAdapter;
 import in.ceeq.imprint.adapters.BaseRecyclerAdapter;
 import in.ceeq.imprint.entity.App;
+import in.ceeq.imprint.helpers.DeviceUtils;
 import in.ceeq.imprint.helpers.PermissionUtils;
 import in.ceeq.imprint.helpers.PreferenceUtils;
+import in.ceeq.imprint.service.EventService;
 import io.fabric.sdk.android.Fabric;
 
 public class AppListActivity extends BaseAppActivity implements BaseRecyclerAdapter.OnViewAppListener{
@@ -83,6 +87,17 @@ public class AppListActivity extends BaseAppActivity implements BaseRecyclerAdap
 	    if(!PermissionUtils.hasPermission(this, Manifest.permission.USE_FINGERPRINT)) {
 		    PermissionUtils.handleFingerPrintPermissionDenied(this);
 	    }
+
+		if (DeviceUtils.hasMarshmallow()) {
+			if (Settings.canDrawOverlays(this)) {
+				//startService(new Intent(this, LockService.class));
+			}
+		}
+
+
+		// startActivityForResult(new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS), 0);
+
+		startService(new Intent(this, EventService.class));
     }
 
 	private void initToolbar() {
@@ -120,7 +135,8 @@ public class AppListActivity extends BaseAppActivity implements BaseRecyclerAdap
 		    // Show the fingerprint dialog. The user has the option to use the fingerprint with
 		    // crypto, or you can fall back to using a server-side verified password.
 		    mFragment.setCryptoObject(new FingerprintManager.CryptoObject(mCipher));
-		    boolean useFingerprintPreference = PreferenceUtils.getBooleanPrefs(this, PreferenceUtils.USE_FINGERPRINT);
+		    boolean useFingerprintPreference =
+					PreferenceUtils.newInstance(this).getBooleanPrefs(PreferenceUtils.USE_FINGERPRINT);
 		    if (useFingerprintPreference) {
 			    mFragment.setStage(
 					    FingerprintAuthenticationDialogFragment.Stage.FINGERPRINT);

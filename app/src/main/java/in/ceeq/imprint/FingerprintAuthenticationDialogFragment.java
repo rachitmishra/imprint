@@ -160,7 +160,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
             return;
         }
         if (mStage == Stage.NEW_FINGERPRINT_ENROLLED) {
-            PreferenceUtils.set(mActivity, PreferenceUtils.USE_FINGERPRINT,  mUseFingerprintFutureCheckBox.isChecked());
+            PreferenceUtils.newInstance(getActivity()).set(PreferenceUtils.USE_FINGERPRINT,  mUseFingerprintFutureCheckBox.isChecked());
             if (mUseFingerprintFutureCheckBox.isChecked()) {
                 // Re-create the key so that fingerprints including new ones are validated.
                 mActivity.createKey();

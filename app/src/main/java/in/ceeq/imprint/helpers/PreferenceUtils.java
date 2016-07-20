@@ -6,76 +6,89 @@ import android.preference.PreferenceManager;
 
 public class PreferenceUtils {
 
-	public static final String API_TOKEN = "api_token";
+    public static final String API_TOKEN = "api_token";
 
-	public static final String GCM_REGISTRATION_TOKEN = "gcm_registration_token";
+    public static final String GCM_REGISTRATION_TOKEN = "gcm_registration_token";
 
-	public static final String IS_REGISTERED_TO_SERVER = "is_registered_to_server";
+    public static final String USE_FINGERPRINT = "use_fingerprint";
 
-	public static final String CURRENT_NOTIFICATION_COUNT = "current_notification_count";
+    private static final String PREFERENCE_FILE_NAME = "common_preferences";
+    private final SharedPreferences mSharedPreference;
 
-	public static final String USE_FINGERPRINT = "use_fingerprint";
+    private PreferenceUtils(Context context) {
+        mSharedPreference = context.getSharedPreferences(PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+    }
 
+    public PreferenceUtils(Context context, String preferenceFileName) {
+        mSharedPreference = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    }
 
-    public static Boolean getBooleanPrefs(Context ctx, String key) {
-		return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(key, false);
-	}
+    public static PreferenceUtils newInstance(Context context) {
+        return new PreferenceUtils(context);
+    }
 
-	public static String getStringPrefs(Context ctx, String key) {
-		return PreferenceManager.getDefaultSharedPreferences(ctx).getString(key, "");
-	}
+    public boolean getBooleanPrefs(String key) {
+        return getBooleanPrefs(key, false);
+    }
 
-	public static String getStringPrefs(Context ctx, String key, String defaultValue) {
-		return PreferenceManager.getDefaultSharedPreferences(ctx).getString(key, defaultValue);
-	}
+    public boolean getBooleanPrefs(String key, Boolean defaultValue) {
+        return mSharedPreference.getBoolean(key, defaultValue);
+    }
 
-	public static int getIntegerPrefs(Context ctx, String key) {
-		return PreferenceManager.getDefaultSharedPreferences(ctx).getInt(key, 0);
-	}
+    public String getStringPrefs(String key) {
+        return mSharedPreference.getString(key, "");
+    }
 
-	public static int getIntegerPrefs(Context ctx, String key, int defaultValue) {
-		return PreferenceManager.getDefaultSharedPreferences(ctx).getInt(key, defaultValue);
-	}
+    public String getStringPrefs(String key, String defaultValue) {
+        return mSharedPreference.getString(key, defaultValue);
+    }
 
-	public static long getLongPrefs(Context ctx, String key) {
-		return PreferenceManager.getDefaultSharedPreferences(ctx).getLong(key, 0);
-	}
+    public int getIntegerPrefs(String key) {
+        return mSharedPreference.getInt(key, 0);
+    }
 
-	public static long getLongPrefs(Context ctx, String key, int defaultValue) {
-		return PreferenceManager.getDefaultSharedPreferences(ctx).getLong(key, defaultValue);
-	}
+    public int getIntegerPrefs(String key, int defaultValue) {
+        return mSharedPreference.getInt(key, defaultValue);
+    }
 
-    public static float getFLoatPrefs(Context ctx, String key) {
-        return PreferenceManager.getDefaultSharedPreferences(ctx).getFloat(key, 0);
+    public long getLongPrefs(String key) {
+        return mSharedPreference.getLong(key, 0L);
+    }
+
+    public long getLongPrefs(String key, long defaultValue) {
+        return mSharedPreference.getLong(key, defaultValue);
     }
 
 
-    public static void set(final Context context, final String key, final Object value) {
-		SharedPreferences.Editor sharedPreferenceEditor = PreferenceManager.getDefaultSharedPreferences(context)
-				.edit();
-		if (value instanceof String) {
-			sharedPreferenceEditor.putString(key, (String) value);
-		} else if (value instanceof Long) {
-			sharedPreferenceEditor.putLong(key, (Long) value);
-		} else if (value instanceof Integer) {
-			sharedPreferenceEditor.putInt(key, (Integer) value);
-		} else if (value instanceof Boolean) {
-			sharedPreferenceEditor.putBoolean(key, (Boolean) value);
-		} else if (value instanceof Float) {
+    public float getFloatPrefs(String key) {
+        return mSharedPreference.getFloat(key, 0);
+    }
+
+    public void set(final String key, final Object value) {
+        final SharedPreferences.Editor sharedPreferenceEditor = mSharedPreference.edit();
+        if (value instanceof String) {
+            sharedPreferenceEditor.putString(key, (String) value);
+        } else if (value instanceof Long) {
+            sharedPreferenceEditor.putLong(key, (Long) value);
+        } else if (value instanceof Integer) {
+            sharedPreferenceEditor.putInt(key, (Integer) value);
+        } else if (value instanceof Boolean) {
+            sharedPreferenceEditor.putBoolean(key, (Boolean) value);
+        } else if (value instanceof Float) {
             sharedPreferenceEditor.putFloat(key, (Float) value);
         }
-		sharedPreferenceEditor.apply();
-	}
+        sharedPreferenceEditor.apply();
+    }
 
-	public static void clear(final Context context) {
-		PreferenceManager.getDefaultSharedPreferences(context).edit().clear().commit();
-	}
+    public void clear() {
+        mSharedPreference.edit().clear().commit();
+    }
 
-	public static String getApiToken(Context context) {
-		return getStringPrefs(context, PreferenceUtils.API_TOKEN);
-	}
+    public boolean isKeyPresent(String key) {
+        return mSharedPreference.contains(key);
+    }
 
-	public static String getGcmRegistrationToken(Context context) {
-		return getStringPrefs(context, PreferenceUtils.GCM_REGISTRATION_TOKEN);
-	}
+    public static void clear(final Context context) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().clear().commit();
+    }
 }

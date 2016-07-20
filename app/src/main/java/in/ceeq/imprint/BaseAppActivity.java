@@ -19,16 +19,16 @@ public class BaseAppActivity extends AppCompatActivity {
         setTitle("");
         TextView titleTv = (TextView) toolbar.findViewById(R.id.toolbar_title);
         titleTv.setText(title);
-        if(showCloseIcon) {
+        if (showCloseIcon) {
             getSupportActionBar().setHomeAsUpIndicator(ResourcesCompat.getDrawable(getResources(),
                     android.R.drawable.ic_input_delete, null));
         }
     }
 
-    public void setStatusBarColor(View statusBar,int color){
+    public void setStatusBarColor(View statusBar, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             //status bar height
             int actionBarHeight = getActionBarHeight();
             int statusBarHeight = getStatusBarHeight();
@@ -41,8 +41,7 @@ public class BaseAppActivity extends AppCompatActivity {
     public int getActionBarHeight() {
         int actionBarHeight = 0;
         TypedValue tv = new TypedValue();
-        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true))
-        {
+        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
             actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
         }
         return actionBarHeight;
