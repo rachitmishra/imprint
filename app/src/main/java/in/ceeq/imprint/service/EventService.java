@@ -7,6 +7,7 @@ import android.provider.Settings;
 import android.view.accessibility.AccessibilityEvent;
 
 import in.ceeq.imprint.helpers.DeviceUtils;
+import in.ceeq.imprint.helpers.PreferenceUtils;
 
 
 public class EventService extends AccessibilityService {
@@ -29,6 +30,8 @@ public class EventService extends AccessibilityService {
 
     @Override
     public void onInterrupt() {
+
+        PreferenceUtils.newInstance(this).set(PreferenceUtils.ACCESSIBILITY_SERVICE_RUNNING, false);
     }
 
     @Override
@@ -39,6 +42,8 @@ public class EventService extends AccessibilityService {
         info.eventTypes = AccessibilityEvent.TYPES_ALL_MASK;
         info.feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC;
         setServiceInfo(info);
+
+        PreferenceUtils.newInstance(this).set(PreferenceUtils.ACCESSIBILITY_SERVICE_RUNNING, true);
     }
 
 }
