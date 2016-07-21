@@ -4,9 +4,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by rachit on 15/12/15.
- */
 public class App implements Parcelable {
 
 	public String name;

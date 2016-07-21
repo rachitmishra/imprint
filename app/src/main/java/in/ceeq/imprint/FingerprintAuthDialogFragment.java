@@ -21,7 +21,7 @@ import com.crashlytics.android.answers.CustomEvent;
 import in.ceeq.imprint.helpers.FingerprintUiHelper;
 import in.ceeq.imprint.helpers.PreferenceUtils;
 
-public class FingerprintAuthenticationDialogFragment extends DialogFragment
+public class FingerprintAuthDialogFragment extends DialogFragment
         implements TextView.OnEditorActionListener, FingerprintUiHelper.Callback {
 
     private Button mCancelButton;
@@ -37,10 +37,10 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 
     private FingerprintManager.CryptoObject mCryptoObject;
     private FingerprintUiHelper mFingerprintUiHelper;
-    private AppListActivity mActivity;
+    private HomeActivity mActivity;
 
     private FingerprintUiHelper.FingerprintUiHelperBuilder mFingerprintUiHelperBuilder;
-    public FingerprintAuthenticationDialogFragment() {}
+    public FingerprintAuthDialogFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -124,7 +124,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        mActivity = (AppListActivity) activity;
+        mActivity = (HomeActivity) activity;
     }
 
     /**

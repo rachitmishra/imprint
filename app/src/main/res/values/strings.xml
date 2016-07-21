@@ -26,4 +26,6 @@
     <string name="permission_error_fingerprint">Fingerprint permission was denied!</string>
     <string name="label_allow">Allow</string>
     <string name="enable">Enable</string>
+    <string name="tab_title_all">All</string>
+    <string name="tab_title_secured">Secured</string>
 </resources>

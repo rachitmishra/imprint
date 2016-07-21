@@ -12,6 +12,8 @@ public class PreferenceUtils {
 
     public static final String USE_FINGERPRINT = "use_fingerprint";
 
+    public static final String IS_ACCESSIBILITY_SERVICE_RUNNING = "is_accessibility_service_running";
+
     private static final String PREFERENCE_FILE_NAME = "common_preferences";
     private final SharedPreferences mSharedPreference;
 
