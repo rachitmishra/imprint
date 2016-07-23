@@ -1,6 +1,5 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="Base.AppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -744,5 +743,4 @@
         <item name="android:layout_marginRight">@dimen/list_item_margin_horizontal</item>
         <item name="android:padding">0dp</item>
     </style>
-
 </resources>

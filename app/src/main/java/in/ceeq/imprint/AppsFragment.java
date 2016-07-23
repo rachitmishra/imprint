@@ -53,7 +53,6 @@ public class AppsFragment extends Fragment implements BaseRecyclerAdapter.OnView
         applicationRecyclerView.setAdapter(mBaseRecyclerAdapter);
 
         mCipherKeyHelper = CipherKeyHelper.newInstance();
-
         initFingerPrintAuth();
         return view;
     }
