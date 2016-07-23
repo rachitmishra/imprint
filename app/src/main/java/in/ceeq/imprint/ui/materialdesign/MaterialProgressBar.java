@@ -34,7 +34,7 @@ public class MaterialProgressBar extends ProgressBar {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialProgressBar, defStyle, 0);
 
         final int color = a.getColor(R.styleable.MaterialProgressBar_color,
-                ContextCompat.getColor(getContext(), R.color.colorWhite));
+                ContextCompat.getColor(getContext(), R.color.white));
         final float strokeWidth = a.getDimension(R.styleable.MaterialProgressBar_stroke_width, res.getDimension(R.dimen.default_stroke_width));
         final float sweepSpeed = a.getFloat(R.styleable.MaterialProgressBar_sweep_speed, Float.parseFloat(res.getString(R.string.default_sweep_speed)));
         final float rotationSpeed = a.getFloat(R.styleable.MaterialProgressBar_rotation_speed, Float.parseFloat(res.getString(R.string.default_rotation_speed)));

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/permission_dialog_rational_tv_title"
+        style="@style/AppTheme.Dialog.Text.Title"/>
+
+    <TextView
+        android:id="@+id/permission_dialog_rational_tv_message"
+        style="@style/AppTheme.Dialog.Text.Body"
+        android:layout_below="@+id/permission_dialog_rational_tv_title"/>
+
+    <RelativeLayout
+        style="@style/AppTheme.Dialog.ButtonBar"
+        android:layout_below="@+id/permission_dialog_rational_tv_message">
+
+        <Button
+            android:id="@+id/permission_dialog_rational_btn_dismiss"
+            style="@style/AppTheme.Dialog.Button.Flat"
+            android:layout_toLeftOf="@+id/permission_dialog_rational_btn_allow"
+            android:layout_toStartOf="@+id/permission_dialog_rational_btn_allow"
+            android:text="Dismiss"/>
+
+        <Button
+            android:id="@+id/permission_dialog_rational_btn_allow"
+            style="@style/AppTheme.Dialog.Button.Flat"
+            android:layout_alignParentRight="true"
+            android:text="Allow"/>
+    </RelativeLayout>
+</RelativeLayout>

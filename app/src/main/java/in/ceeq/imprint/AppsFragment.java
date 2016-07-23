@@ -52,9 +52,9 @@ public class AppsFragment extends Fragment implements BaseRecyclerAdapter.OnView
                 new AppListRecyclerAdapter(getContext(), applicationList, this);
         applicationRecyclerView.setAdapter(mBaseRecyclerAdapter);
 
-        initFingerPrintAuth();
-
         mCipherKeyHelper = CipherKeyHelper.newInstance();
+
+        initFingerPrintAuth();
         return view;
     }
 

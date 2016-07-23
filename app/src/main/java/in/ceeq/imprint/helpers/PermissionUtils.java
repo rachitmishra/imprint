@@ -7,13 +7,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import in.ceeq.imprint.PermissionRationaleDialogFragment;
 import in.ceeq.imprint.R;
 
 public class PermissionUtils {
@@ -57,7 +62,7 @@ public class PermissionUtils {
                 public void onClick(View v) {
                     openPermissionSettingsScreen(activity, REQUEST_CODE_APP_PERMISSION_SCREEN);
                 }
-            }).setActionTextColor(ContextCompat.getColor(activity, R.color.yellow_500)).show();
+            }).setActionTextColor(ContextCompat.getColor(activity, R.color.yellow_tan)).show();
         } else {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_PERMISSION_EXTERNAL_STORAGE);
         }
@@ -77,7 +82,7 @@ public class PermissionUtils {
                 public void onClick(View v) {
                     openPermissionSettingsScreen(activity, REQUEST_CODE_APP_PERMISSION_SCREEN);
                 }
-            }).setActionTextColor(ContextCompat.getColor(activity, R.color.yellow_500)).show();
+            }).setActionTextColor(ContextCompat.getColor(activity, R.color.yellow_tan)).show();
         } else {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.USE_FINGERPRINT}, REQUEST_CODE_PERMISSION_USE_FINGERPRINT);
         }
@@ -98,43 +103,33 @@ public class PermissionUtils {
         activity.startActivityForResult(myAppSettings, requestCode);
     }
 
-    public static void showOverlayPermissionDialog(final Activity activity, String content) {
-        new AlertDialog.Builder(activity, R.style.AppTheme_Dialog_Alert)
-                .setMessage(content)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                Uri.parse("package:" + activity.getPackageName()));
-                        activity.startActivityForResult(intent, REQUEST_CODE_PERMISSION_DRAW_OVERLAY);
-                    }
-                })
-                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(final DialogInterface dialog, final int which) {
-                        dialog.dismiss();
-                    }
+    private void showPermissionDialog(AppCompatActivity activity, String title, String message,
+                                      DialogInterface.OnClickListener positiveClickListner) {
 
-                }).show();
+        PermissionRationaleDialogFragment.show(activity.getSupportFragmentManager(), null);
     }
 
-    public static void showAccessibilityServicePermissionDialog(final Activity activity, String content) {
-        new AlertDialog.Builder(activity, R.style.AppTheme_Dialog_Alert)
-                .setMessage(content)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS,
-                                Uri.parse("package:" + activity.getPackageName()));
-                        activity.startActivityForResult(intent, REQUEST_CODE_PERMISSION_ACCESSIBILITY_SETTINGS);
-                    }
-                })
-                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(final DialogInterface dialog, final int which) {
-                        dialog.dismiss();
-                    }
+    private static void requestPermissionFromActivity(final FragmentActivity fragmentActivity,
+                                                      final String permission) {
+//        ActivityCompat.requestPermissions(fragmentActivity,
+//                new String[]{permission}, getRequestCodeByPermission(permission));
+    }
 
-                }).show();
+    private static void requestPermissionFromFragment(final Fragment fragment, final String permission) {
+        if(fragment != null) {
+            fragment.requestPermissions(new String[]{permission}, getRequestCodeByPermission(permission));
+        }
+    }
+
+    private static void openAccessibilitySettingScreen(Activity activity) {
+        Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS,
+                                          Uri.parse("package:" + activity.getPackageName()));
+        activity.startActivityForResult(intent, REQUEST_CODE_PERMISSION_ACCESSIBILITY_SETTINGS);
+    }
+
+    private static void openOverlayDrawSettingScreen(Activity activity) {
+        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                          Uri.parse("package:" + activity.getPackageName()));
+        activity.startActivityForResult(intent, REQUEST_CODE_PERMISSION_DRAW_OVERLAY);
     }
 }

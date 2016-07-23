@@ -1,12 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="white">#FFFFFF</color>
-    <color name="hint_color">#454545</color>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="warning_color">#ff4a26</color>
-    <color name="success_color">#12b13d</color>
-    <color name="yellow_500">#ffcc00</color>
+
+    <!-- Updating palette has to be reflected across application -->
+    <!-- The #XX before color reflects percentage alpha from base color value -->
+    <!-- App palette -->
+    <color name="charcoal">#FF2D3030</color>
+    <color name="charcoal_54">#AA2D3030</color>
+    <color name="charcoal_38">#262D3030</color>
+    <color name="charcoal_12">#0C2D3030</color>
+    <color name="turquoise_blue">#FF00A7B7</color>
+    <color name="teal_blue">#FF008C93</color>
+    <color name="turquoise_blue_38">#2600A7B7</color>
+    <color name="turquoise_blue_54">#AA00A7B7</color>
+    <color name="pale_grey">#FFF2F8F9</color>
+    <color name="blush">#FFF27C7C</color>
+    <color name="yellow_tan">#57FFD874</color>
+    <color name="dull_brown">#FF917854</color>
+    <color name="bluish_green">#FF0EA96D</color>
+    <color name="scarlet">#FFD0021B</color>
+    <color name="dark_peach">#FFED6767</color>
+    <color name="black">@android:color/black</color>
+    <color name="white">@android:color/white</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="cool_grey">#9EA2A1</color>
+    <color name="light_grey">#16D8D8D8</color>
+    <color name="white_grey">#EEEEEE</color>
+    <color name="dark_blue_grey">#FF0E1D30</color>
+
+    <!-- Material default colors -->
+    <color name="colorPrimary">@color/white</color>
+    <color name="colorSecondary">@color/cool_grey</color>
+    <color name="colorPrimaryDark">@color/charcoal</color>
+    <color name="colorAccent">@color/turquoise_blue</color>
+    <color name="colorIcon">@color/charcoal</color>
+    <color name="colorIconToolbar">@color/charcoal_54</color>
+    <color name="colorIconWhite">@color/white</color>
+    <color name="colorIconLight">@color/charcoal_54</color>
+    <color name="colorIconAccent">@color/turquoise_blue</color>
+
+    <!-- Shadows -->
+    <color name="colorShadow">@color/charcoal_12</color>
+    <color name="colorShadowBackground">@color/charcoal_38</color> <!-- Dialog shadow background -->
+
+    <!-- Divider -->
+    <color name="colorDivider">@color/charcoal_12</color>
+
+    <!-- Background colors -->
+    <color name="colorWindowBackground">@color/pale_grey</color>
+    <color name="colorWindowBackgroundHome">@color/charcoal</color>
+    <color name="colorWarningBackground">@color/yellow_tan</color>
+    <color name="colorErrorBackground">@color/dark_peach</color>
+
+    <!-- Text colors -->
+    <color name="colorTextPrimary">@color/charcoal</color>
+    <color name="colorTextSecondary">@color/charcoal_54</color>
+    <color name="colorTextDisabled">@color/charcoal_38</color> <!-- Can be used as tertiary text color -->
+    <color name="colorTextWarning">@color/dull_brown</color>
+    <color name="colorTextLinkNormal">@color/turquoise_blue</color>
+    <color name="colorTextLinkHighlight">@color/teal_blue</color>
+    <color name="colorTextLinkDisabled">@color/turquoise_blue_38</color>
+    <color name="colorTextPositive">@color/bluish_green</color>
+    <color name="colorTextNegative">@color/scarlet</color>
+    <color name="colorTextWhite_54">#8AFFFFFF</color>
+
+    <!-- Button colors -->
+    <color name="colorButtonNormal">@color/turquoise_blue</color>
+    <color name="colorButtonPressed">@color/teal_blue</color>
+    <color name="colorButtonDisabled">@color/turquoise_blue_54</color>
+    <color name="colorButtonTransparentHighlight">@color/white_grey</color>
+    <color name="colorButtonAccentHighlight">@color/teal_blue</color>
+    <color name="colorButtonPrimaryHighlight">@color/charcoal_38</color>
+
+    <!-- EditText colors -->
+    <color name="colorControlNormal">@color/charcoal_38</color>
+    <color name="colorControlDisabled">@color/charcoal_12</color>
+    <color name="colorControlHighlight">@color/turquoise_blue</color>
+
+    <!-- Tab colors -->
+    <color name="colorTabSelector">@color/turquoise_blue</color>
+
+    <!-- Cards -->
+    <color name="cardBackgroundColor">@color/white</color>
+
+    <!-- Letter tile -->
+    <color name="letterTileColorDefault">@color/charcoal</color>
+    <color name="letterTileColorFont">@color/white</color>
+
+    <!-- Home Divider colors -->
+    <color name="colorDividerDark">@color/charcoal_38</color>
+
 </resources>

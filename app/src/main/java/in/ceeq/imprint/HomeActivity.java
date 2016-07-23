@@ -37,7 +37,7 @@ public class HomeActivity extends BaseActivity {
         }
 
         if (!PreferenceUtils.newInstance(this).getBooleanPrefs(PreferenceUtils.IS_ACCESSIBILITY_SERVICE_RUNNING)) {
-            PermissionUtils.showAccessibilityServicePermissionDialog(this, "Allow to draw!");
+            PermissionUtils.showAccessibilityServicePermissionDialog(this, "Allow to accessibility!");
         }
 
         // startService(new Intent(this, EventService.class));

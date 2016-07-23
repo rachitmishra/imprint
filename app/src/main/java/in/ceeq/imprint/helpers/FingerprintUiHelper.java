@@ -102,7 +102,7 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
         mErrorTextView.removeCallbacks(mResetErrorTextRunnable);
         mIcon.setImageResource(android.R.drawable.ic_lock_lock);
         mErrorTextView.setTextColor(
-                mErrorTextView.getResources().getColor(R.color.success_color, null));
+                mErrorTextView.getResources().getColor(R.color.colorTextPositive, null));
         mErrorTextView.setText("Finger print success!");
         mIcon.postDelayed(new Runnable() {
             @Override
@@ -116,7 +116,7 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
         mIcon.setImageResource(android.R.drawable.ic_lock_lock);
         mErrorTextView.setText(error);
         mErrorTextView.setTextColor(
-                mErrorTextView.getResources().getColor(R.color.warning_color, null));
+                mErrorTextView.getResources().getColor(R.color.colorTextNegative, null));
         mErrorTextView.removeCallbacks(mResetErrorTextRunnable);
         mErrorTextView.postDelayed(mResetErrorTextRunnable, ERROR_TIMEOUT_MILLIS);
     }
@@ -126,7 +126,7 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
         @Override
         public void run() {
             mErrorTextView.setTextColor(
-                    mErrorTextView.getResources().getColor(R.color.hint_color, null));
+                    mErrorTextView.getResources().getColor(R.color.colorTextSecondary, null));
             mErrorTextView.setText("Scan fingerprint");
             mIcon.setImageResource(android.R.drawable.ic_lock_lock);
         }

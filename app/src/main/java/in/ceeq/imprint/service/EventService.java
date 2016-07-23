@@ -31,7 +31,7 @@ public class EventService extends AccessibilityService {
     @Override
     public void onInterrupt() {
 
-        PreferenceUtils.newInstance(this).set(PreferenceUtils.ACCESSIBILITY_SERVICE_RUNNING, false);
+        PreferenceUtils.newInstance(this).set(PreferenceUtils.IS_ACCESSIBILITY_SERVICE_RUNNING, false);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class EventService extends AccessibilityService {
         info.feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC;
         setServiceInfo(info);
 
-        PreferenceUtils.newInstance(this).set(PreferenceUtils.ACCESSIBILITY_SERVICE_RUNNING, true);
+        PreferenceUtils.newInstance(this).set(PreferenceUtils.IS_ACCESSIBILITY_SERVICE_RUNNING, true);
     }
 
 }
